@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [users, setUsers] = useState(["Andrew", "Kunal", "Chelsea"]);
+	const [user, setUser] = useState("");
+	return (
+		<div className="App">
+			<header className="App-header">
+				<img
+					src="https://fakebuddhaquotes.com/wp-content/uploads/2015/03/moneky-mind-263x300.gif"
+					className="App-logo"
+					alt="logo"
+				/>
+				<p>eMonk</p>
+				<select value={user} onChange={(e) => setUser(e.target.value)}>
+					{users.map((user) => (
+						<option value={user}>{user}</option>
+					))}
+				</select>
+			</header>
+		</div>
+	);
 }
 
 export default App;
