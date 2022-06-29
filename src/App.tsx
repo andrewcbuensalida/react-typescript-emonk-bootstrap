@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
 
 interface User {
 	id: number;
@@ -36,9 +35,8 @@ function App() {
 
 	async function handleAddUser() {
 		console.log(`This is in add`);
-		const id = uuidv4();
 		try {
-			const { data } = await axios.post("", { id, username });
+			const { data } = await axios.post("", { username });
 			console.log(`This is data in `);
 			console.log(data);
 
