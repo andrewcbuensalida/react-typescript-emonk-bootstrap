@@ -8,6 +8,9 @@ interface User {
 	username: string;
 }
 
+
+const endpoint = "https://fa2exyuda5.execute-api.us-west-1.amazonaws.com/users";
+
 function App() {
 	const [users, setUsers] = useState<User[]>([]);
 	const [username, setUsername] = useState("");
@@ -15,15 +18,13 @@ function App() {
 	useEffect(() => {
 		async function getUsers() {
 			try {
-				const { data } = await axios.get("");
+				const { data } = await axios.get(
+					endpoint
+				);
 				console.log(`This is data in `);
 				console.log(data);
 
-				setUsers([
-					{ id: 1, username: "Andrew" },
-					{ id: 2, username: "Kunal" },
-					{ id: 3, username: "Chelsea" },
-				]);
+				setUsers(data);
 			} catch (error) {
 				console.log(`This is error:`, error);
 			}
@@ -36,11 +37,11 @@ function App() {
 	async function handleAddUser() {
 		console.log(`This is in add`);
 		try {
-			const { data } = await axios.post("", { username });
+			const { data } = await axios.post(endpoint, { username });
 			console.log(`This is data in `);
 			console.log(data);
 
-			setUsers([...users]);
+			setUsers([...users,data]);
 		} catch (error) {
 			console.log(`This is error:`, error);
 		}
@@ -49,7 +50,7 @@ function App() {
 	async function handleDeleteUser(id: number) {
 		console.log(`This is in delete`, id);
 		try {
-			const { data } = await axios.delete("");
+			const { data } = await axios.delete(endpoint+'/');
 			console.log(`This is data in `);
 			console.log(data);
 
@@ -80,12 +81,12 @@ function App() {
 				<button onClick={handleAddUser}>Add user</button>
 				<ul>
 					{users.map((user) => (
-						<>
-							<li key={user.id}>{user.username}</li>
+						<li key={user.id}>
+							{user.username}{" "}
 							<button onClick={() => handleDeleteUser(user.id)}>
 								Delete
 							</button>
-						</>
+						</li>
 					))}
 				</ul>
 			</header>
