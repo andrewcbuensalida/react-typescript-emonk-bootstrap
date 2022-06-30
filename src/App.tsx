@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
-
 interface User {
 	id: number;
 	username: string;
@@ -35,10 +34,9 @@ function App() {
 		console.log(`This is in add`);
 		try {
 			const { data } = await axios.post(endpoint, { username });
-			console.log(`This is data in `);
-			console.log(data);
 
 			setUsers([...users, data]);
+			setUsername("");
 		} catch (error) {
 			console.log(`This is error:`, error);
 		}
@@ -48,8 +46,6 @@ function App() {
 		console.log(`This is in delete`, id);
 		try {
 			const { data } = await axios.delete(`${endpoint}/${id}`);
-			console.log(`This is data in `);
-			console.log(data);
 
 			setUsers(users.filter((user) => user.id !== id));
 		} catch (error) {
@@ -59,7 +55,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<header className="App-header">
+			<header className="App-header bg-dark ">
 				<img
 					src="https://fakebuddhaquotes.com/wp-content/uploads/2015/03/moneky-mind-263x300.gif"
 					className="App-logo"
