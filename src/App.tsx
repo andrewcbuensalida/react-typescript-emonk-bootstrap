@@ -8,7 +8,6 @@ interface User {
 	username: string;
 }
 
-
 const endpoint = "https://fa2exyuda5.execute-api.us-west-1.amazonaws.com/users";
 
 function App() {
@@ -18,9 +17,7 @@ function App() {
 	useEffect(() => {
 		async function getUsers() {
 			try {
-				const { data } = await axios.get(
-					endpoint
-				);
+				const { data } = await axios.get(endpoint);
 				console.log(`This is data in `);
 				console.log(data);
 
@@ -41,7 +38,7 @@ function App() {
 			console.log(`This is data in `);
 			console.log(data);
 
-			setUsers([...users,data]);
+			setUsers([...users, data]);
 		} catch (error) {
 			console.log(`This is error:`, error);
 		}
@@ -50,15 +47,11 @@ function App() {
 	async function handleDeleteUser(id: number) {
 		console.log(`This is in delete`, id);
 		try {
-			const { data } = await axios.delete(endpoint+'/');
+			const { data } = await axios.delete(`${endpoint}/${id}`);
 			console.log(`This is data in `);
 			console.log(data);
 
-			setUsers([
-				{ id: 1, username: "Andrew" },
-				{ id: 2, username: "Kunal" },
-				{ id: 3, username: "Chelsea" },
-			]);
+			setUsers(users.filter((user) => user.id !== id));
 		} catch (error) {
 			console.log(`This is error:`, error);
 		}
