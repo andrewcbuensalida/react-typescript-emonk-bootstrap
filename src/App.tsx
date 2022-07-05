@@ -7,7 +7,7 @@ interface User {
 	username: string;
 }
 
-const endpoint = "https://fa2exyuda5.execute-api.us-west-1.amazonaws.com/users";
+const endpoint = "https://ueue9gqs50.execute-api.us-west-1.amazonaws.com/users";
 
 function App() {
 	const [users, setUsers] = useState<User[]>([]);
