@@ -7,6 +7,7 @@ interface User {
 }
 
 const endpoint = "https://ueue9gqs50.execute-api.us-west-1.amazonaws.com/users";
+// const endpoint = "http://localhost:3000/users"; // if hitting serverless offline
 
 function App() {
 	const [users, setUsers] = useState<User[]>([]);
