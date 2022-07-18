@@ -1,25 +1,24 @@
-import { render, screen } from "@testing-library/react";
-//to use toBeInTheDocument
-import "@testing-library/jest-dom";
+import React from "react";
+import { render, screen, waitFor } from "@testing-library/react";
 import App from "../App";
-//enzyme is being deprecated. If I want to shallow render a component, meaning not it's children, then use react-test-renderer/shallow
-import { shallow } from "enzyme";
 
-test("renders learn react link", () => {
-	render(<App />);
-	const linkElement = screen.getByText(/eMonk/i);
-	expect(linkElement).toBeInTheDocument();
-});
+//Can either do a mock using the __mock__ folder, or inline as a callback for the second argument in jest.mock. For some reason their example of lodash doesn't need this.
+jest.mock("axios");
 
-jest.mock("axios", () => ({
-	get: () => ({
-		data: {
-			id: 100,
-			username: "Drew",
-		},
-	}),
-}));
+describe("App", () => {
+  it("renders emonk", () => {
+    render(<App />);
+    const title = screen.getByText(/eMonk/i);
+    expect(title).toBeInTheDocument();
+  });
 
-test("renders learn react link", () => {
-	shallow(<App />);
+  it("gets users", async () => {
+    render(<App />);
+
+    // could either use waitFor or async await with findByText. actually if you remove await from waitFor, it still works
+    await waitFor(() => {
+      const user = screen.getByText(/mock username/i);
+      expect(user).toBeInTheDocument();
+    });
+  });
 });

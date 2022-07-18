@@ -1,60 +1,56 @@
 {
-	"name": "client",
-	"version": "0.1.0",
-	"private": true,
-	"dependencies": {
-		"axios": "^0.27.2",
-		"bootstrap": "^5.1.3",
-		"react-bootstrap": "^1.6.1",
-		"react-bootstrap-icons": "^1.8.4",
-		"react-hook-form": "^6.9.6",
-		"react-scripts": "5.0.1",
-		"styled-components": "^5.3.5",
-		"ts-jest": "^28.0.5",
-		"web-vitals": "^2.1.4",
-		"yup": "^0.32.11"
-	},
-	"devDependencies": {
-		"@testing-library/jest-dom": "^5.14.1",
-		"@testing-library/react": "^12.0.0",
-		"@testing-library/user-event": "^7.2.1",
-		"@types/bootstrap": "^5.1.12",
-		"@types/enzyme": "^3.10.5",
-		"@types/enzyme-adapter-react-16": "^1.0.6",
-		"@types/jest": "^26.0.24",
-		"@types/node": "^12.12.39",
-		"@types/react": "^16.9.35",
-		"@types/react-dom": "^16.9.8",
-		"enzyme": "^3.11.0",
-		"enzyme-adapter-react-16": "^1.15.6",
-		"live-server": "^1.2.2",
-		"typescript": "^4.0.0"
-	},
-	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject",
-		"unitTestSilent": "react-scripts test --watchAll --coverage --silent",
-		"unitTest": "react-scripts test --watchAll --coverage",
-		"coverage": "cd coverage && cd lcov-report && live-server --quiet"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	}
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/bootstrap": "^5.1.12",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.41",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "axios": "^0.27.2",
+    "better-npm-run": "^0.1.1",
+    "bootstrap": "^5.1.3",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.4.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.7.4",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test:ci": "better-npm-run test:ci",
+    "eject": "react-scripts eject"
+  }, 
+  "betterScripts": {
+    "test:ci": {
+      "command": "react-scripts test --coverage --watch",
+      "env": {
+        "CI": "true"
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
